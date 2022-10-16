@@ -1,0 +1,45 @@
+h1 {
+	color: black;
+	font-size: 18px;
+	font-weight:400;
+	background: #eaeaca;
+}
+p
+{
+	color: #707070;
+    font-style: italic;
+    line-height: 16px;
+    text-align: left;
+    font-size: 14px;
+}
+body {
+    background-color: #f8f8e8;
+}
+.menu li {
+    font-style: italic;
+    font-size: 20px;
+    list-style-type: none;
+}
+.menu li a {
+    color: #8B00FF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
