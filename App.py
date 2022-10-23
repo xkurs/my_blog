@@ -8,10 +8,11 @@ def index():
     return render_template('index.html')
 
 
-@app.route("/secret/")
-def secret():
-    my_dict = {"alex": "Hi!", "ivan": "Hello!"}
-    return render_template('index.html')
+@app.route("/secret/<name>/")
+def secret(name):
+    my_dict = {"alex": "Hi, Alex!", "ivan": "Hello, Ivan!"}
+    result = my_dict.get(name, "Привет, незнакомец!")
+    return f'<h1>{result}</h1> <p>Тебе сюда: </p> <a href="../index">Главная</a>'
 
 
 @app.route("/about/")
