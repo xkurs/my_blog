@@ -1,23 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %}
-  Обо мне
-{% endblock %}
-
-{% block section %}
-<section>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center"><h1 class="h1">Юлия Романовна</h1></div>
-      <div class="col-md-12">
-        <div class="h-100 p-5 bg-light border rounded-3">
-          <h2>Адрес: г.Москва, ул.Кукушкина, д.20</h2>
-          <p>Номер телефона: 89183000000</p>
-          <p>Используя ряд утилит, Вы можете создать этот jumbotron, точно такой же, как в предыдущих версиях Bootstrap. Ознакомьтесь с приведенными ниже примерами, как Вы можете сделать ремикс и изменить его по своему вкусу.</p>
-          <button class="btn btn-outline-secondary" type="button">a89183000000@yandex.ru</button>
-        </div>
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h4>{{context.address}}</h4>
+        <h4>{{context.telephone}}</h4>
+        <h4>{{context.email}}</h4>
       </div>
     </div>
   </div>
-</section>
+</div>
 {% endblock %}

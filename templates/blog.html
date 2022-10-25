@@ -1,28 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}
-  Истории
-{% endblock %}
-
-{% block section %}
-  <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center"><h1 class="h1">Истории</h1></div>
-        <div class="col-xl-4 col-md-6">
-          <h3>Первое путешествие</h3>
-          <img src={{url_for('static', filename = 'image/Felix.jpg')}} alt="">
-          <p>1, 5 года я впервые поехали с родителями на море в Сочи.Это очень красивый город и я рада,<br>что смогла побывать именно там в таком маленьком возрасте</p>
-        </div>
-        <div class="col-xl-4 col-md-6">
-          <h3>Артек</h3>
-          <p>В 12 лет я впревые поехала в лагерь "Артек", я научилась там многому чему.<br>Каждый день находится там для меня была огромная радость.У меня были очень насыщенные дни.</p>
-        </div>
-        <div class="col-xl-4 col-md-6">
-          <h3>Веселые зимние каникулы</h3>
-          <p>6 лет я впервые защищала свой проект на конкурсе "Я-иследователь".<br>Мне очень понравился этот конкурс.</p>
-        </div>
+{% block content %}
+<div class="container">
+  <div class="row">
+    {% for c in context -%}
+      <div class="col-xl-4 col-md-6">
+        <h4>{{c.head}}</h4>
+        {% if c.image -%}
+          <img src={{c.image}}>
+        {% endif -%}
+        <p>{{c.text}}</p>
       </div>
-    </div>
-  </section>
+    {% endfor -%}
+  </div>
+</div>
 {% endblock %}
