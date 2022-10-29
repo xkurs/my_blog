@@ -5,7 +5,9 @@ app = Flask(__name__)
 @app.route("/index/")
 @app.route("/")
 def index():
-    context = {'hello': 'Добро пожаловать!',
+    context = {'title': 'О главном',
+               'active': '/',
+               'hello': 'Добро пожаловать!',
                'text': 'Моя любимая игра это Genshin Impact, очень известная и также очень интересная игра. '
                        'Я расскажу о ней немного. '
                        'Genshin Impact это компьютерная игра в жанре action-adventure с открытым миром и элементами RPG, разработанная китайской компанией miHoYo Limited. '
@@ -15,37 +17,41 @@ def index():
                        '(в зависимости от того, кого игрок выберет в начале игры) прежде чем разлучиться в Тейвате. '
                        'Вместе со своей спутницей-компаньоном Паймон Путешественник отправляется на поиски своего потерянного близнеца, '
                        'одновременно участвуя в делах народов Тейвата.'}
-    return render_template('index.html', title='О главном', context=context)
+    return render_template('index.html', **context)
 
 
 @app.route("/secret/<name>/")
 def secret(name):
-    my_dict = {"alex": "Hi, Alex!", "ivan": "Hello, Ivan!"}
-    return f'<h1>{my_dict.get(name, "Привет, незнакомец!")}</h1>' \
+    my_dict = {"alex": "Alex!", "ivan": "Ivan!"}
+    return f'<h1>Привет, {my_dict.get(name, "незнакомец!")}</h1>' \
            f'<p>Тебе сюда:</p>' \
            f'<a href={url_for("index")}>Главная</a>'
 
 
 @app.route("/about/")
 def about():
-    context = {'address': 'Адрес: г.Москва, ул.Кукушкина, д.20',
-                'telephone': 'Телефон: 89183000000',
-                'email': 'Почта: a89183000000@yandex.ru'}
-    return render_template('about.html', title='О себе', context=context)
+    context = {'title': 'О себе',
+               'active': 'about',
+               'address': 'Адрес: г.Москва, ул.Кукушкина, д.20',
+               'telephone': 'Телефон: 89183000000',
+               'email': 'Почта: a89183000000@yandex.ru'}
+    return render_template('about.html', **context)
 
 
 @app.route("/blog/")
 def blog():
-    context = [{'head': 'Первое путешествие',
-                'text': 'В 1,5 года я впервые поехали с родителями на море в Сочи. Это очень красивый город и я рада, что смогла побывать именно там в таком маленьком возрасте',
-                'image': None},
-               {'head': 'Артек',
-                'text': 'В 12 лет я впервые поехала в лагерь "Артек", я научилась там многому чему. Каждый день находится там для меня была огромная радость. У меня были очень насыщенные дни.',
-                'image': url_for('static', filename='image/Felix.jpg')},
-               {'head': 'Веселые зимние каникулы',
-                'text': 'В 6 лет я впервые защищала свой проект на конкурсе "Я-исследователь". Мне очень понравился этот конкурс.',
-                'image': url_for('static', filename='image/Felix.jpg')}]
-    return render_template('blog.html', title='Блог', context=context)
+    context = {'title': 'Блог',
+               'active': 'blog',
+               'blog': [{'head': 'Первое путешествие',
+                         'text': 'В 1,5 года я впервые поехали с родителями на море в Сочи. Это очень красивый город и я рада, что смогла побывать именно там в таком маленьком возрасте',
+                         'image': None},
+                        {'head': 'Артек',
+                         'text': 'В 12 лет я впервые поехала в лагерь "Артек", я научилась там многому чему. Каждый день находится там для меня была огромная радость. У меня были очень насыщенные дни.',
+                         'image': url_for('static', filename='image/Felix.jpg')},
+                        {'head': 'Веселые зимние каникулы',
+                         'text': 'В 6 лет я впервые защищала свой проект на конкурсе "Я-исследователь". Мне очень понравился этот конкурс.',
+                         'image': url_for('static', filename='image/Felix.jpg')}]}
+    return render_template('blog.html', **context)
 
 
 if __name__ == "__main__":

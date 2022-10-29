@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% for c in context -%}
+  {% for b in blog -%}
     <div class="col-xl-4 col-md-6">
-      <h4>{{c.head}}</h4>
-      {% if c.image -%}
-        <img src={{c.image}}>
+      <h4>{{b.head}}</h4>
+      {% if b.image -%}
+        <img src={{b.image}}>
       {% endif -%}
-      <p>{{c.text}}</p>
+      <p>{{b.text}}</p>
     </div>
   {% endfor -%}
 {% endblock %}
